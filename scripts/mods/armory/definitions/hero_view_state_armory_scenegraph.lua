@@ -137,7 +137,7 @@ return {
         parent = "header_title_divider",
         vertical_alignment = "bottom",
         horizontal_alignment = "left",
-        size = { right_window_size[1] / 2 - 5, 50 },
+        size = { base_info_segment_width * 2 + 25, 50 },
         position = { 5, -5, 50 }
     },
 
@@ -1275,14 +1275,14 @@ return {
         vertical_alignment = "bottom",
         horizontal_alignment = "center",
         size = { left_window_size[1], left_window_size[2] - 395 },
-        position = { 30, 0, 5 }
+        position = { 30, 0, 1 }
     },
     weapon_preview_viewport = {
         parent = "weapon_preview_tray",
         vertical_alignment = "top",
         horizontal_alignment = "center",
         size = { left_window_size[1] - 10, left_window_size[2] - 475 },
-        position = { 0, -5, -5 }
+        position = { 0, -5, 8 }
     },
     weapon_preview_button_tray = {
         parent = "weapon_preview_tray",

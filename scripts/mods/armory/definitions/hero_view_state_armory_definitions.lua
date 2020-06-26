@@ -609,8 +609,8 @@ local viewport_widget = {
                 Application.DISABLE_ESRAM
             },
             camera_position = { 0, 0, 0 },
-            camera_lookat = { 0, 0, 0 },
-            layer = UILayer.default,
+            camera_lookat = { 0, 0, 1 },
+            layer = 990
         }
     },
     content = {
@@ -666,7 +666,7 @@ local hero_icons = {
 }
 
 local widgets = {
-    window = UIWidgets.create_frame("window", scenegraph_definition.window.size, "menu_frame_11", 40),
+    window = UIWidgets.create_frame("window", scenegraph_definition.window.size, "menu_frame_11"),
     window_bg = UIWidgets.create_tiled_texture("window_bg", "talent_tree_bg_01", { 1065, 820 }, nil, false, { 255, 100, 100, 100 }),
     exit_button = UIWidgets.create_default_button("exit_button", scenegraph_definition.exit_button.size, nil, nil, Localize("menu_close"), 24, nil, "button_detail_04", 34),
     title = UIWidgets.create_simple_texture("frame_title_bg", "title"),
@@ -686,8 +686,8 @@ local widgets = {
     item_tabs = UIWidgets.create_frame("item_tabs", scenegraph_definition.item_tabs.size, "menu_frame_09", 15),
     item_grid = mod.create_grid("item_grid", scenegraph_definition.item_grid.size, 2, 6, 10, 5),
 
-    weapon_preview_tray = UIWidgets.create_frame("weapon_preview_tray", scenegraph_definition.weapon_preview_tray.size, "menu_frame_09", 20),
-    weapon_preview_tray_hover = UIWidgets.create_frame("weapon_preview_tray", scenegraph_definition.weapon_preview_tray.size, "menu_frame_12", 22),
+    weapon_preview_tray = UIWidgets.create_frame("weapon_preview_tray", scenegraph_definition.weapon_preview_tray.size, "menu_frame_09"),
+    weapon_preview_tray_hover = UIWidgets.create_frame("weapon_preview_tray", scenegraph_definition.weapon_preview_tray.size, "menu_frame_12"),
     weapon_preview_tray_hotspot = UIWidgets.create_simple_hotspot("weapon_preview_tray"),
     weapon_preview_button_tray = UIWidgets.create_frame("weapon_preview_button_tray", scenegraph_definition.weapon_preview_button_tray.size, "menu_frame_09", 18),
     weapon_preview_button_tray_hover = UIWidgets.create_frame("weapon_preview_button_tray", scenegraph_definition.weapon_preview_button_tray.size, "menu_frame_12", 25),
@@ -1056,7 +1056,7 @@ local detail_info = {
     header_special_property_hotspot = {
         title = "Special Properties",
         desc = "Burns, Bleeds, Poisons: Indicates the type of damage over time an attack inflicts.",
-        desc2 = "Crit: Indicates the bonus to critical chance.\n\nLinesman, Heavy Linesman, Tank: Indicates the mass modifier of an attack.\nRefer to an enemy's entry in Bestiary for specifics."
+        desc2 = "Crit: Indicates the bonus to critical chance.\n\nLinesman, Heavy Linesman, Tank: Indicates the mass modifier of an attack.\nRefer to an enemy's entry in bestiary for specifics."
     },
     base_info_ranged_max_range_hotspot = {
         title = "Max Range / Projectile Lifetime",

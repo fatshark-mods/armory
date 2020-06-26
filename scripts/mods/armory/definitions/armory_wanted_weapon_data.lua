@@ -1,4 +1,12 @@
 return {
+    es_sword_shield_breton = {
+        skin_prefix = "es_sword_shield_breton",
+        position = {}
+    },
+    es_bastard_sword = {
+        skin_prefix = "es_bastard_sword",
+        position = {}
+    },
     es_2h_heavy_spear = {
         skin_prefix = "es_2h_heavy_spear",
         position = {}
