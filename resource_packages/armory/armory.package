@@ -1,0 +1,17 @@
+mod = [
+	"armory"
+]
+
+package = [
+	"resource_packages/armory/armory"
+]
+
+lua = [
+	"scripts/mods/armory/*"
+
+	"materials/armory/armory_atlas"
+]
+
+material = [
+    "materials/armory/*"
+]
