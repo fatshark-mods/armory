@@ -1,26 +1,43 @@
 local mod = get_mod("armory")
 
--- Until a slider is implemented, just default to 600 power
-mod.update = function ()
+mod.refresh_power_levels = function (profile_name, career_name)
 
-    if not mod.initialized then
-
-        if not Managers.state.game_mode then
-            return
-        end
-
-        mod.power_level = 600 + PowerLevelFromLevelSettings.starting_power_level
-        mod.scaled_cleave_power_level = ActionUtils.scale_power_levels(mod.power_level, "cleave", nil, "hardest")
-        mod.scaled_attack_power_level = ActionUtils.scale_power_levels(mod.power_level, "attack", nil, "hardest")
-
-        mod.initialized = true
-
-    end
+    mod.power_level = BackendUtils.get_total_power_level(profile_name, career_name)
+    mod.scaled_cleave_power_level = ActionUtils.scale_power_levels(mod.power_level, "cleave", nil, "hardest")
+    mod.scaled_attack_power_level = ActionUtils.scale_power_levels(mod.power_level, "attack", nil, "hardest")
 
 end
 
+--mod:dofile("scripts/mods/armory/widgets/armory_widgets")
+--mod:dofile("scripts/mods/armory/armory_view/armory_view")
 mod:dofile("scripts/mods/armory/hero_view_state_armory")
 mod:dofile("scripts/mods/armory/armory_weapon_preview")
+
+--local view_data = {
+--    view_name = "armory_view",
+--    view_settings = {
+--        init_view_function = function (ingame_ui_context)
+--            return ArmoryView:new(ingame_ui_context)
+--        end,
+--        active = {
+--            inn = true,
+--            ingame = false
+--        },
+--        blocked_transitions = {
+--            inn = {},
+--            ingame = {}
+--        }
+--    },
+--    view_transitions = {
+--        open_armory_view = function (ingame_ui)
+--            ingame_ui.current_view = "armory_view"
+--        end,
+--        close_armory_view = function (ingame_ui)
+--            ingame_ui.current_view = nil
+--        end
+--    }
+--}
+--mod:register_view(view_data)
 
 if IngameMenuKeymaps.win32 then
     IngameMenuKeymaps.win32.right_hold = {
@@ -126,7 +143,7 @@ mod.get_damage = function (use_player, item, damage_profile, index, breed_name, 
     local damage_source = ItemMasterList[item].name
     local hit_zone_name = hit_zone or "torso"
     local target_index = index or 1
-    local target_settings = (damage_profile.targets and damage_profile.targets[target_index]) or damage_profile.default_target
+    local target_settings = (index and damage_profile.targets and damage_profile.targets[index]) or damage_profile.default_target
     local boost_curve = BoostCurves[target_settings.boost_curve_type]
     local boost_damage_multiplier = nil
     local is_critical_strike = false
@@ -138,7 +155,11 @@ mod.get_damage = function (use_player, item, damage_profile, index, breed_name, 
     local has_power_boost = false
     local difficulty_level = "hardest"
 
-    local damage = DamageUtils.calculate_damage_tooltip(unit, damage_source, mod.power_level, hit_zone_name, damage_profile, target_index, boost_curve, boost_damage_multiplier, is_critical_strike, backstab_multiplier, breed, dropoff_scalar, has_power_boost, difficulty_level, armor_type, primary_armor_type)
+    local player = Managers.player:local_player()
+    local profile_name, career_name = hero_and_career_name_from_index(player:profile_index(), player:career_index())
+    mod.refresh_power_levels(profile_name, career_name)
+
+    local damage = DamageUtils.calculate_damage_tooltip(unit, damage_source, mod.power_level, hit_zone_name, damage_profile, index, boost_curve, boost_damage_multiplier, is_critical_strike, backstab_multiplier, breed, dropoff_scalar, has_power_boost, difficulty_level, armor_type, primary_armor_type)
 
     return damage
 end

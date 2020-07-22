@@ -1,5 +1,18 @@
 return {
     es = {
+        bastard_sword_template = {
+            light = {
+                "light_attack_left",
+                "light_attack_right",
+                "light_attack_uppercut"
+            },
+            push = "light_attack_bopp",
+            heavy = {
+                "heavy_attack_right",
+                "heavy_attack_left",
+                "heavy_attack_down"
+            }
+        },
         two_handed_heavy_spears_template = {
             light = {
                 "light_attack_left",
@@ -128,6 +141,19 @@ return {
                 "heavy_attack",
                 "heavy_attack_stab",
                 "heavy_attack_right"
+            }
+        },
+        one_handed_sword_shield_template_2 = {
+            light = {
+                "light_attack_left",
+                "light_attack_right",
+                "light_attack_shield"
+            },
+            push = "light_attack_stab_postpush",
+            heavy = {
+                "heavy_attack",
+                "heavy_attack_right",
+                "heavy_attack_stab"
             }
         },
         two_handed_swords_template_1 = {

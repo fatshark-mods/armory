@@ -49,7 +49,7 @@ HeroViewStateArmory.on_enter = function (self, params)
     self.wwise_world = params.wwise_world
     self.ingame_ui = ingame_ui_context.ingame_ui
 
-    --self.world_previewer = params.world_previewer
+    self.world_previewer = params.world_previewer
     self.platform = PLATFORM
     local player_manager = Managers.player
     local local_player = player_manager:local_player()
@@ -578,7 +578,7 @@ HeroViewStateArmory._display_item_info = function (self, item)
             local outer_push_angle = (push_action and push_action.outer_push_angle) or 0
 
             local melee_base_data = {
-                name = item.name,
+                name = item.item_type,
                 stamina = stamina,
                 dodge_count = dodge_count,
                 dodge_bonus = dodge_bonus,
@@ -648,7 +648,7 @@ HeroViewStateArmory._display_item_info = function (self, item)
 
 
             local ranged_base_data = {
-                name = item.name,
+                name = item.item_type,
                 reload_time = reload_time,
                 max_ammo = max_ammo,
                 ammo_per_clip = ammo_per_clip,
@@ -886,14 +886,14 @@ HeroViewStateArmory._display_melee_action_info = function (self, attacks, data)
 
         local damage_profile = DamageProfileTemplates[attack.damage_profile] or DamageProfileTemplates[attack.damage_profile_right]
         --local base_damage = self:_calc_base_damage(damage_profile, 1)
-        local base_damage = mod.get_damage(false, self.requested_weapon_name, damage_profile)
+        local base_damage = mod.get_damage(true, self.requested_weapon_name, damage_profile, 1)
 
         local max_targets_damage, max_targets_stagger = ActionUtils.get_max_targets(damage_profile, mod.scaled_cleave_power_level)
         widgets[widget_name.."_damage_limit"].content.text = string.format("%.2f", max_targets_damage)
         widgets[widget_name.."_stagger_limit"].content.text = string.format("%.2f", max_targets_stagger)
 
         --local armor_damage = self:_calc_base_damage(damage_profile, 2)
-        local armor_damage = mod.get_damage(false, self.requested_weapon_name, damage_profile, 1, "skaven_storm_vermin")
+        local armor_damage = mod.get_damage(true, self.requested_weapon_name, damage_profile, 1, "skaven_storm_vermin")
         widgets[widget_name.."_armor_damage"].content.text = armor_damage > 0 and string.format("%.2f", armor_damage) or ""
         widgets[widget_name.."_base_damage"].content.text = base_damage > 0 and string.format("%.2f", base_damage) or ""
 
@@ -908,23 +908,23 @@ HeroViewStateArmory._display_melee_action_info = function (self, attacks, data)
         local berserker_damage = {}
         local heavy_armor_damage = {}
 
-        local max_targets = math.ceil(max_targets_damage / Breeds["skaven_slave"].hit_mass_counts[5])
-        for i = 1, max_targets, 1 do
-            unarmored_damage[i] = string.format("%.2f", mod.get_damage(false, self.requested_weapon_name, damage_profile, i))
-            armored_damage[i] = string.format("%.2f", mod.get_damage(false, self.requested_weapon_name, damage_profile, i, "skaven_storm_vermin"))
-            monster_damage[i] = string.format("%.2f", mod.get_damage(false, self.requested_weapon_name, damage_profile, i, "skaven_rat_ogre"))
-            berserker_damage[i] = string.format("%.2f", mod.get_damage(false, self.requested_weapon_name, damage_profile, i, "skaven_plague_monk"))
-            heavy_armor_damage[i] = string.format("%.2f", mod.get_damage(false, self.requested_weapon_name, damage_profile, i, "chaos_warrior"))
+        --local max_targets = math.ceil(max_targets_damage / Breeds["skaven_slave"].hit_mass_counts[5])
+        --for i = 1, max_targets, 1 do
+        --    unarmored_damage[i] = string.format("%.2f", mod.get_damage(false, self.requested_weapon_name, damage_profile, i, "skaven_slave"))
+        --    armored_damage[i] = string.format("%.2f", mod.get_damage(false, self.requested_weapon_name, damage_profile, i, "skaven_storm_vermin"))
+        --    monster_damage[i] = string.format("%.2f", mod.get_damage(false, self.requested_weapon_name, damage_profile, i, "skaven_rat_ogre"))
+        --    berserker_damage[i] = string.format("%.2f", mod.get_damage(false, self.requested_weapon_name, damage_profile, i, "skaven_plague_monk"))
+        --    heavy_armor_damage[i] = string.format("%.2f", mod.get_damage(false, self.requested_weapon_name, damage_profile, i, "chaos_warrior"))
+        --
+        --end
 
-        end
-
-        widgets[widget_name.."_hotspot"].content.data = {
-            desc = "Unarmored: " .. table.concat(unarmored_damage, ', ')
-                    .. "\nArmored: " .. table.concat(armored_damage, ', ')
-                    .. "\nMonster: " .. table.concat(monster_damage, ', ')
-                    .. "\nBerserker: " .. table.concat(berserker_damage, ', ')
-                    .. "\nHeavily Armored: " .. table.concat(heavy_armor_damage, ', ')
-        }
+        --widgets[widget_name.."_hotspot"].content.data = {
+        --    desc = "Unarmored: " .. table.concat(unarmored_damage, ', ')
+        --            .. "\nArmored: " .. table.concat(armored_damage, ', ')
+        --            .. "\nMonster: " .. table.concat(monster_damage, ', ')
+        --            .. "\nBerserker: " .. table.concat(berserker_damage, ', ')
+        --            .. "\nHeavily Armored: " .. table.concat(heavy_armor_damage, ', ')
+        --}
 
 
     end
@@ -959,26 +959,28 @@ HeroViewStateArmory._display_melee_action_info = function (self, attacks, data)
         widgets[widget_name.."_attack_speed"].content.text = attack_speed .. "s"
 
         local damage_profile = DamageProfileTemplates[attack.damage_profile] or DamageProfileTemplates[attack.damage_profile_right]
-        local base_damage = self:_calc_base_damage(damage_profile)
+        --local base_damage = self:_calc_base_damage(damage_profile, 1)
+        local base_damage = mod.get_damage(true, self.requested_weapon_name, damage_profile, 1)
 
         local max_targets_damage, max_targets_stagger = ActionUtils.get_max_targets(damage_profile, mod.scaled_cleave_power_level)
         widgets[widget_name.."_damage_limit"].content.text = string.format("%.2f", max_targets_damage)
         widgets[widget_name.."_stagger_limit"].content.text = string.format("%.2f", max_targets_stagger)
 
-        local armor_damage, heavy_armor_damage = self:_calc_base_damage(damage_profile, 2)
+        --local armor_damage = self:_calc_base_damage(damage_profile, 2)
+        local armor_damage = mod.get_damage(true, self.requested_weapon_name, damage_profile, 1, "skaven_storm_vermin")
         widgets[widget_name.."_armor_damage"].content.text = armor_damage > 0 and string.format("%.2f", armor_damage) or ""
         widgets[widget_name.."_base_damage"].content.text = base_damage > 0 and string.format("%.2f", base_damage) or ""
 
         local special_property = self:_get_special_property(attack, damage_profile)
         widgets[widget_name.."_special"].content.text = special_property
 
-        widgets[widget_name.."_hotspot"].content.data = {
-            desc = "Unarmored: " .. tostring(mod.get_damage(false, self.requested_weapon_name, damage_profile))
-                    .. "\nArmored: " .. tostring(mod.get_damage(false, self.requested_weapon_name, damage_profile, nil, "skaven_storm_vermin"))
-                    .. "\nMonster: " .. tostring(mod.get_damage(false, self.requested_weapon_name, damage_profile, nil, "skaven_rat_ogre"))
-                    .. "\nBerserker: " .. tostring(mod.get_damage(false, self.requested_weapon_name, damage_profile, nil, "skaven_plague_monk"))
-                    .. "\nHeavily Armored: " .. tostring(mod.get_damage(false, self.requested_weapon_name, damage_profile, nil, "chaos_warrior"))
-        }
+        --widgets[widget_name.."_hotspot"].content.data = {
+        --    desc = "Unarmored: " .. tostring(mod.get_damage(false, self.requested_weapon_name, damage_profile))
+        --            .. "\nArmored: " .. tostring(mod.get_damage(false, self.requested_weapon_name, damage_profile, nil, "skaven_storm_vermin"))
+        --            .. "\nMonster: " .. tostring(mod.get_damage(false, self.requested_weapon_name, damage_profile, nil, "skaven_rat_ogre"))
+        --            .. "\nBerserker: " .. tostring(mod.get_damage(false, self.requested_weapon_name, damage_profile, nil, "skaven_plague_monk"))
+        --            .. "\nHeavily Armored: " .. tostring(mod.get_damage(false, self.requested_weapon_name, damage_profile, nil, "chaos_warrior"))
+        --}
 
     end
 
@@ -1000,26 +1002,28 @@ HeroViewStateArmory._display_melee_action_info = function (self, attacks, data)
         widgets.action_info_push_attack_attack_speed.content.text = attack_speed .. "s"
 
         local damage_profile = DamageProfileTemplates[attack.damage_profile] or DamageProfileTemplates[attack.damage_profile_right]
-        local base_damage = self:_calc_base_damage(damage_profile, 1)
+        --local base_damage = self:_calc_base_damage(damage_profile, 1)
+        local base_damage = mod.get_damage(true, self.requested_weapon_name, damage_profile, 1)
 
         local max_targets_damage, max_targets_stagger = ActionUtils.get_max_targets(damage_profile, mod.scaled_cleave_power_level)
-        widgets.action_info_push_attack_damage_limit.content.text = string.format("%.2f", max_targets_damage)
-        widgets.action_info_push_attack_stagger_limit.content.text = string.format("%.2f", max_targets_stagger)
+        widgets[widget_name.."_damage_limit"].content.text = string.format("%.2f", max_targets_damage)
+        widgets[widget_name.."_stagger_limit"].content.text = string.format("%.2f", max_targets_stagger)
 
-        local armor_damage, heavy_armor_damage = self:_calc_base_damage(damage_profile, 2)
-        widgets.action_info_push_attack_armor_damage.content.text = armor_damage > 0 and string.format("%.2f", armor_damage) or ""
-        widgets.action_info_push_attack_base_damage.content.text = base_damage > 0 and string.format("%.2f", base_damage) or ""
+        --local armor_damage = self:_calc_base_damage(damage_profile, 2)
+        local armor_damage = mod.get_damage(true, self.requested_weapon_name, damage_profile, 1, "skaven_storm_vermin")
+        widgets[widget_name.."_armor_damage"].content.text = armor_damage > 0 and string.format("%.2f", armor_damage) or ""
+        widgets[widget_name.."_base_damage"].content.text = base_damage > 0 and string.format("%.2f", base_damage) or ""
 
         local special_property = self:_get_special_property(attack, damage_profile)
         widgets.action_info_push_attack_special.content.text = special_property
 
-        widgets[widget_name.."_hotspot"].content.data = {
-            desc = "Unarmored: " .. tostring(mod.get_damage(false, self.requested_weapon_name, damage_profile))
-                    .. "\nArmored: " .. tostring(mod.get_damage(false, self.requested_weapon_name, damage_profile, nil, "skaven_storm_vermin"))
-                    .. "\nMonster: " .. tostring(mod.get_damage(false, self.requested_weapon_name, damage_profile, nil, "skaven_rat_ogre"))
-                    .. "\nBerserker: " .. tostring(mod.get_damage(false, self.requested_weapon_name, damage_profile, nil, "skaven_plague_monk"))
-                    .. "\nHeavily Armored: " .. tostring(mod.get_damage(false, self.requested_weapon_name, damage_profile, nil, "chaos_warrior"))
-        }
+        --widgets[widget_name.."_hotspot"].content.data = {
+        --    desc = "Unarmored: " .. tostring(mod.get_damage(false, self.requested_weapon_name, damage_profile))
+        --            .. "\nArmored: " .. tostring(mod.get_damage(false, self.requested_weapon_name, damage_profile, nil, "skaven_storm_vermin"))
+        --            .. "\nMonster: " .. tostring(mod.get_damage(false, self.requested_weapon_name, damage_profile, nil, "skaven_rat_ogre"))
+        --            .. "\nBerserker: " .. tostring(mod.get_damage(false, self.requested_weapon_name, damage_profile, nil, "skaven_plague_monk"))
+        --            .. "\nHeavily Armored: " .. tostring(mod.get_damage(false, self.requested_weapon_name, damage_profile, nil, "chaos_warrior"))
+        --}
     end
 end
 
@@ -1217,7 +1221,7 @@ HeroViewStateArmory._fetch_weapons = function (self, index)
             local is_ignored = ignored_item_types[item.item_type]
             if not is_ignored then
                 for _, type in ipairs(ignored_item_types) do
-                    if string.match(item_name, type) ~= nil or string.match(item_name, "_%d%d%d%d") ~= nil then
+                    if string.match(item_name, type) ~= nil or string.match(item_name, "_%d%d%d%d") ~= nil or string.match(item_name, "_preview") ~= nil then
                         is_ignored = true
 
                         break
