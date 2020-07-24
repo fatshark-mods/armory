@@ -759,14 +759,21 @@ HeroViewStateArmory._display_ranged_action_info = function (self, attacks, data)
             widgets[widget_name.."_attack_speed"].content.text = (attack.total_time ~= math.huge and string.format("%.2f", attack.total_time) .. "s") or "Varies"
         end
 
-        local damage_profile = DamageProfileTemplates[attack.damage_profile] or (attack.impact_data and DamageProfileTemplates[attack.impact_data.damage_profile]) or DamageProfileTemplates.default
-        local base_damage = self:_calc_base_damage(damage_profile, 1)
+        local damage_profile = (attack.impact_data and DamageProfileTemplates[attack.impact_data.damage_profile]) or DamageProfileTemplates[attack.damage_profile] or DamageProfileTemplates.default
+        --local base_damage = self:_calc_base_damage(damage_profile, 1)
+        local base_damage = mod.get_damage(true, self.requested_weapon_name, damage_profile, 1)
+        local armor_damage = mod.get_damage(true, self.requested_weapon_name, damage_profile, 1, "skaven_storm_vermin") * 1.2
+
+        if damage_profile.no_stagger_damage_reduction then
+            base_damage = DamageUtils.networkify_damage(base_damage * 1.2)
+            armor_damage = DamageUtils.networkify_damage(armor_damage * 1.2)
+        end
 
         local max_targets_damage, max_targets_stagger = ActionUtils.get_max_targets(damage_profile, mod.scaled_cleave_power_level)
         widgets[widget_name.."_damage_limit"].content.text = string.format("%.2f", max_targets_damage)
         widgets[widget_name.."_stagger_limit"].content.text = string.format("%.2f", max_targets_stagger)
 
-        local armor_damage, heavy_armor_damage = self:_calc_base_damage(damage_profile, 2)
+        --local armor_damage, heavy_armor_damage = self:_calc_base_damage(damage_profile, 2)
         widgets[widget_name.."_armor_damage"].content.text = armor_damage > 0 and string.format("%.2f", armor_damage) or ""
         widgets[widget_name.."_base_damage"].content.text = base_damage > 0 and string.format("%.2f", base_damage) or ""
         --widgets[widget_name.."_armor_damage_text"].content.text = string.format("%.2f", armor_damage)
@@ -800,14 +807,20 @@ HeroViewStateArmory._display_ranged_action_info = function (self, attacks, data)
             widgets[widget_name.."_attack_speed"].content.text = (attack.total_time ~= math.huge and string.format("%.2f", attack.total_time) .. "s") or "Varies"
         end
 
-        local damage_profile = DamageProfileTemplates[attack.damage_profile] or (attack.impact_data and DamageProfileTemplates[attack.impact_data.damage_profile])
-        local base_damage = self:_calc_base_damage(damage_profile)
+        local damage_profile = (attack.impact_data and DamageProfileTemplates[attack.impact_data.damage_profile]) or DamageProfileTemplates[attack.damage_profile] or DamageProfileTemplates.default
+        local base_damage = mod.get_damage(true, self.requested_weapon_name, damage_profile, 1)
+        local armor_damage = mod.get_damage(true, self.requested_weapon_name, damage_profile, 1, "skaven_storm_vermin")
+
+        if damage_profile.no_stagger_damage_reduction then
+            base_damage = DamageUtils.networkify_damage(base_damage * 1.2)
+            armor_damage = DamageUtils.networkify_damage(armor_damage * 1.2)
+        end
 
         local max_targets_damage, max_targets_stagger = ActionUtils.get_max_targets(damage_profile, mod.scaled_cleave_power_level)
         widgets[widget_name.."_damage_limit"].content.text = string.format("%.2f", max_targets_damage)
         widgets[widget_name.."_stagger_limit"].content.text = string.format("%.2f", max_targets_stagger)
 
-        local armor_damage, heavy_armor_damage = self:_calc_base_damage(damage_profile, 2)
+        --local armor_damage, heavy_armor_damage = self:_calc_base_damage(damage_profile, 2)
         widgets[widget_name.."_armor_damage"].content.text = armor_damage > 0 and string.format("%.0f", armor_damage) or ""
         widgets[widget_name.."_base_damage"].content.text = base_damage > 0 and string.format("%.2f", base_damage) or ""
 
