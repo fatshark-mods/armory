@@ -762,7 +762,7 @@ HeroViewStateArmory._display_ranged_action_info = function (self, attacks, data)
         local damage_profile = (attack.impact_data and DamageProfileTemplates[attack.impact_data.damage_profile]) or DamageProfileTemplates[attack.damage_profile] or DamageProfileTemplates.default
         --local base_damage = self:_calc_base_damage(damage_profile, 1)
         local base_damage = mod.get_damage(true, self.requested_weapon_name, damage_profile, 1)
-        local armor_damage = mod.get_damage(true, self.requested_weapon_name, damage_profile, 1, "skaven_storm_vermin") * 1.2
+        local armor_damage = mod.get_damage(true, self.requested_weapon_name, damage_profile, 1, "skaven_storm_vermin")
 
         if damage_profile.no_stagger_damage_reduction then
             base_damage = DamageUtils.networkify_damage(base_damage * 1.2)
