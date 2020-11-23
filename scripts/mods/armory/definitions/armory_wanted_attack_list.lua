@@ -181,6 +181,27 @@ return {
         }
     },
     dr = {
+        heavy_steam_pistol_template_1 = {
+            ranged = {
+                { "shoot", "Shot" },
+                { "fast_shot", "Fast Shot" }
+            },
+            alternate = {}
+        },
+        two_handed_cog_hammers_template_1 = {
+            light = {
+                "light_attack_left",
+                "light_attack_right",
+                "light_attack_last",
+                "light_attack_up_right_last",
+                --"light_attack_left_pose"
+            },
+            push = "light_attack_bopp",
+            heavy = {
+                "heavy_attack_left",
+                "heavy_attack_right"
+            }
+        },
         one_handed_throwing_axes_template = {
             ranged = {
                 { "default", "Throw" },

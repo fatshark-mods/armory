@@ -260,7 +260,15 @@ return {
             --right_hand_unit = { -.275, 1.85, .825 }
         }
     },
-
+    dr_steam_pistol = {
+        skin_prefix = "dr_steam_pistol",
+        position = {},
+        is_ranged = true
+    },
+    dr_2h_cog_hammer = {
+        skin_prefix = "dr_2h_cog_hammer",
+        position = {}
+    },
     dr_1h_throwing_axes = {
         skin_prefix = "dr_1h_throwing_axes",
         position = { }
