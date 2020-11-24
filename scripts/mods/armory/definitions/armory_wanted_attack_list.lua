@@ -252,7 +252,7 @@ return {
             },
             alternate = {}
         },
-        handgun_template_1 = {
+        handgun_template_2 = {
             ranged = {
                 { "default", "Hip Fire" },
                 { "zoomed_shot", "Zoomed Shot" }
