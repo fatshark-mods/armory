@@ -1,4 +1,8 @@
 return {
+    es_deus_01_template = {
+        skin_prefix = "es_deus_01_skin",
+        position = {}
+    },
     es_sword_shield_breton = {
         skin_prefix = "es_sword_shield_breton",
         position = {}

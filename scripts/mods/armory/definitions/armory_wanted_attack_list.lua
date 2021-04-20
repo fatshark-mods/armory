@@ -1,5 +1,18 @@
 return {
     es = {
+        es_deus_01_template = {
+            light = {
+                "light_attack_left",
+                "light_attack_right",
+                "light_attack_last",
+            },
+            push = "light_attack_stab_postpush",
+            heavy = {
+                "heavy_attack",
+                "heavy_attack_right",
+                "heavy_attack_stab",
+            },
+        },
         bastard_sword_template = {
             light = {
                 "light_attack_left",
