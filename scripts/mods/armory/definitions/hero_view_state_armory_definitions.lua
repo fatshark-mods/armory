@@ -11,12 +11,12 @@ mod.create_grid = function (scenegraph_id, size, rows, slots_per_row, slot_width
         255
     }
     local icon_size = {
-        80,
-        80
+        70,
+        70
     }
     local slot_size = {
-        80,
-        80
+        70,
+        70
     }
     slot_width_spacing = slot_width_spacing or 8
     slot_height_spacing = slot_height_spacing or 8
@@ -175,8 +175,8 @@ mod.create_grid = function (scenegraph_id, size, rows, slots_per_row, slot_width
             }
             style[slot_hover_name] = {
                 size = {
-                    128,
-                    128
+                    118,
+                    118
                 },
                 color = {
                     255,
@@ -185,8 +185,8 @@ mod.create_grid = function (scenegraph_id, size, rows, slots_per_row, slot_width
                     255
                 },
                 offset = {
-                    offset[1] - (128 - slot_size[1]) / 2,
-                    offset[2] - (128 - slot_size[2]) / 2,
+                    offset[1] - (118 - slot_size[1]) / 2,
+                    offset[2] - (118 - slot_size[2]) / 2,
                     0
                 }
             }
@@ -203,8 +203,8 @@ mod.create_grid = function (scenegraph_id, size, rows, slots_per_row, slot_width
             }
             style[slot_selected_name] = {
                 size = {
-                    80,
-                    80
+                    70,
+                    70
                 },
                 color = {
                     255,
@@ -213,8 +213,8 @@ mod.create_grid = function (scenegraph_id, size, rows, slots_per_row, slot_width
                     255
                 },
                 offset = {
-                    offset[1] - (80 - slot_size[1]) / 2,
-                    offset[2] - (80 - slot_size[2]) / 2,
+                    offset[1] - (70 - slot_size[1]) / 2,
+                    offset[2] - (70 - slot_size[2]) / 2,
                     6
                 }
             }
@@ -684,7 +684,7 @@ local widgets = {
     weapon_tray_hotspot = UIWidgets.create_simple_hotspot("weapon_tray"),
     weapon_tray_bg = UIWidgets.create_tiled_texture("weapon_tray_bg", "background_leather_02", { 520, 820 }, nil, nil, { 255, 100, 100, 100 }),
     item_tabs = UIWidgets.create_frame("item_tabs", scenegraph_definition.item_tabs.size, "menu_frame_09", 15),
-    item_grid = mod.create_grid("item_grid", scenegraph_definition.item_grid.size, 2, 6, 10, 5),
+    item_grid = mod.create_grid("item_grid", scenegraph_definition.item_grid.size, 2, 7, 10, 10),
 
     weapon_preview_tray = UIWidgets.create_frame("weapon_preview_tray", scenegraph_definition.weapon_preview_tray.size, "menu_frame_09"),
     weapon_preview_tray_hover = UIWidgets.create_frame("weapon_preview_tray", scenegraph_definition.weapon_preview_tray.size, "menu_frame_12"),
