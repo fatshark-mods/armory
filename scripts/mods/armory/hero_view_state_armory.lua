@@ -1079,7 +1079,7 @@ end
 
 HeroViewStateArmory._get_special_property = function (self, attack, damage_profile)
     local target_settings = damage_profile.targets[1] or damage_profile.targets[2]
-    local default_target_settings = damage_profile.default_target and damage_profile.default_target
+    local default_target_settings = damage_profile.default_target
     local dot_template_name = target_settings and target_settings.dot_template_name or default_target_settings.dot_template_name or ""
 
     local prop_text_array = {}
@@ -1092,12 +1092,16 @@ HeroViewStateArmory._get_special_property = function (self, attack, damage_profi
         if string.match(dot_template_name, "bleed") then
             prop_text_array[#prop_text_array + 1] = "Bleeds"
         end
-        if string.match(dot_template_name, "burning") then
+        if string.match(dot_template_name, "burning") or string.match(dot_template_name, "deus_01_dot") then
             prop_text_array[#prop_text_array + 1] = "Burns"
         end
         if string.match(dot_template_name, "poison") then
             prop_text_array[#prop_text_array + 1] = "Poisons"
         end
+    end
+
+    if attack.impact_data and attack.impact_data.aoe then
+        prop_text_array[#prop_text_array + 1] = "Area Damage"
     end
 
     if attack.hit_mass_count then

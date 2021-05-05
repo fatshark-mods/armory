@@ -1,4 +1,8 @@
 return {
+    es_deus_01 = {
+        skin_prefix = "es_deus_01",
+        position = {}
+    },
     es_sword_shield_breton = {
         skin_prefix = "es_sword_shield_breton",
         position = {}
@@ -98,15 +102,17 @@ return {
         is_ranged = true
     },
 
+    we_deus_01 = {
+        skin_prefix = "we_deus_01",
+        position = {}
+    },
     we_1h_spears_shield = {
         skin_prefix = "we_1h_spears_shield",
-        position = { }
+        position = {}
     },
     we_1h_axe = {
         skin_prefix = "we_1h_axe",
-        position = {
-
-        }
+        position = {}
     },
     we_spear = {
         skin_prefix = "we_spear",
@@ -196,15 +202,17 @@ return {
         is_ranged = true
     },
 
+    bw_deus_01 = {
+        skin_prefix = "bw_deus_01",
+        position = {}
+    },
     bw_1h_flail_flaming = {
         skin_prefix = "bw_1h_flail_flaming",
-        position = { }
+        position = {}
     },
     bw_1h_crowbill = {
         skin_prefix = "bw_1h_crowbill",
-        position = {
-
-        }
+        position = {}
     },
     bw_1h_mace = {
         skin_prefix = "bw_1h_mace",
@@ -260,6 +268,11 @@ return {
             --right_hand_unit = { -.275, 1.85, .825 }
         }
     },
+    dr_deus_01 = {
+        skin_prefix = "dr_deus_01",
+        position = {},
+        is_ranged = true
+    },
     dr_steam_pistol = {
         skin_prefix = "dr_steam_pistol",
         position = {},
@@ -271,13 +284,11 @@ return {
     },
     dr_1h_throwing_axes = {
         skin_prefix = "dr_1h_throwing_axes",
-        position = { }
+        position = {}
     },
     dr_dual_wield_hammers = {
         skin_prefix = "dr_dual_wield_hammers",
-        position = {
-
-        }
+        position = {}
     },
     dr_1h_axe = {
         skin_prefix = "dw_1h_axe",
@@ -367,15 +378,17 @@ return {
         }
     },
 
+    wh_deus_01 = {
+        skin_prefix = "wh_deus_01",
+        position = {}
+    },
     wh_2h_billhook = {
         skin_prefix = "wh_2h_billhook",
-        position = { }
+        position = {}
     },
     wh_dual_wield_axe_falchion = {
         skin_prefix = "wh_dual_wield_axe_falchion",
-        position = {
-
-        }
+        position = {}
     },
     wh_1h_axe = {
         skin_prefix = "wh_1h_axe",

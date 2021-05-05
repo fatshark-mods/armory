@@ -1,5 +1,18 @@
 return {
     es = {
+        es_deus_01_template = {
+            light = {
+                "light_attack_left",
+                "light_attack_right",
+                "light_attack_last",
+            },
+            push = "light_attack_stab_postpush",
+            heavy = {
+                "heavy_attack",
+                "heavy_attack_right",
+                "heavy_attack_stab",
+            },
+        },
         bastard_sword_template = {
             light = {
                 "light_attack_left",
@@ -181,6 +194,12 @@ return {
         }
     },
     dr = {
+        dr_deus_01_template_1 = {
+            ranged = {
+                { "default", "Launch" }
+            },
+            alternate = {}
+        },
         heavy_steam_pistol_template_1 = {
             ranged = {
                 { "shoot", "Shot" },
@@ -363,6 +382,14 @@ return {
         }
     },
     we = {
+        we_deus_01_template_1 = {
+            ranged = {
+                { "default", "Quick Shot" },
+                { "shoot_special_charged", "Charged Shot (Low)" },
+                { "shoot_charged", "Charged Shot (High)" }
+            },
+            alternate = {}
+        },
         one_handed_spears_shield_template = {
             light = {
                 "light_attack_left",
@@ -507,6 +534,14 @@ return {
         },
     },
     wh = {
+        wh_deus_01_template_1 = {
+            ranged = {
+                { "default", "Shotgun" }
+            },
+            alternate = {
+                { "default", "Bash" }
+            }
+        },
         two_handed_billhooks_template = {
             light = {
                 "light_attack_stab",
@@ -622,6 +657,13 @@ return {
         }
     },
     bw = {
+        bw_deus_01_template_1 = {
+            ranged = {
+                { "default", "Fireball Shotgun" },
+                { "geiser_launch", "Flame Geyser" }
+            },
+            alternate = {}
+        },
         one_handed_flails_flaming_template = {
             light = {
                 "light_attack_left",
