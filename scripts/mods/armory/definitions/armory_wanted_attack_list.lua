@@ -382,6 +382,27 @@ return {
         }
     },
     we = {
+        staff_life = {
+            ranged = {
+                { "default_chain", "Thorn Repeater" },
+                { "cast_vortex", "Curse of Anraheir" }
+            },
+            alternate = {}
+        },
+
+        javelin_template = {
+            ranged = {
+                { "throw_charged", "Throw"}
+            },
+            alternate = {
+                { "stab_01", "Light Attack 1" },
+                { "stab_02", "Light Attack 2" },
+                { "chain_stab_01", "Light Attack 3" },
+                { "chain_stab_02", "Light Attack 4" },
+                { "chain_stab_03", "Light Attack 5" },
+                { "heavy_stab", "Heavy Attack 1" }
+            }
+        },
         we_deus_01_template_1 = {
             ranged = {
                 { "default", "Quick Shot" },

@@ -610,6 +610,12 @@ HeroViewStateArmory._display_item_info = function (self, item)
                         ranged_attacks[attack_name] = attack_data
                     end
                 end
+
+                for i = 1, #attacks.alternate, 1 do
+                    if attacks.alternate[i][1] == attack_name then
+                        alternate_attacks[attack_name] = attack_data
+                    end
+                end
             end
 
             for attack_name, attack_data in pairs(template.actions.action_two) do
