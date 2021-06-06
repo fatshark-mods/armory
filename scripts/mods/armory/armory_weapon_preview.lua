@@ -49,7 +49,7 @@ MenuWorldPreviewer.clear_units_armory = function (self, reset_camera)
 
     if weapon_units ~= nil then
         for _, weapon_unit in pairs(weapon_units) do
-            if Unit.alive(World.destroy_unit(world, weapon_unit)) then
+            if Unit.alive(weapon_unit) then
                 World.destroy_unit(world, weapon_unit)
             end
         end
