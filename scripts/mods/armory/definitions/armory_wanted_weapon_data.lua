@@ -102,6 +102,14 @@ return {
         is_ranged = true
     },
 
+    we_life_staff = {
+        skin_prefix = "we_life_staff",
+        position = {}
+    },
+    we_javelin = {
+       skin_prefix = "we_javelin",
+       position = {}
+    },
     we_deus_01 = {
         skin_prefix = "we_deus_01",
         position = {}
