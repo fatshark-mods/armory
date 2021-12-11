@@ -555,6 +555,83 @@ return {
         },
     },
     wh = {
+        one_handed_hammer_priest_template = {
+            light = {
+                "light_attack_01",
+                "light_attack_02",
+                "light_attack_03",
+                "light_attack_04"
+            },
+            push = "light_attack_bopp",
+            heavy = {
+                "heavy_attack_01",
+                "heavy_attack_02"
+            }
+        },
+        two_handed_hammer_priest_template = {
+            light = {
+                "light_attack_01",
+                "light_attack_02",
+                "light_attack_03"
+            },
+            push = "punch",
+            heavy = {
+                "heavy_attack_01",
+                "heavy_attack_02",
+                "heavy_attack_03"
+            }
+        },
+        one_handed_hammer_shield_priest_template = {
+            light = {
+                "light_attack_left",
+                "light_attack_right",
+                "light_attack_last"
+            },
+            push = "light_attack_bopp",
+            heavy = {
+                "heavy_attack",
+                "heavy_attack_left"
+            }
+        },
+        dual_wield_hammers_priest_template = {
+            light = {
+                "light_attack_left",
+                "light_attack_right_uppercut",
+                "light_attack_left_diagonal"
+            },
+            push = "light_attack_bopp",
+            heavy = {
+                "heavy_attack",
+                "heavy_attack_2",
+                "heavy_attack_3"
+            }
+        },
+        one_handed_hammer_book_priest_template = {
+            light = {
+                "light_attack_01",
+                "light_attack_02",
+                "light_attack_01_pose"
+            },
+            push = "push_attack",
+            heavy = {
+                "heavy_attack_stab",
+                "heavy_attack_left_charged"
+            }
+        },
+        one_handed_flail_shield_template = {
+            light = {
+                "light_attack_01",
+                "light_attack_02_pose",
+                "light_attack_03",
+                "light_attack_04",
+                "light_attack_05"
+            },
+            push = "light_attack_bopp",
+            heavy = {
+                "heavy_attack",
+                "heavy_attack_02"
+            }
+        },
         wh_deus_01_template_1 = {
             ranged = {
                 { "default", "Shotgun" }
