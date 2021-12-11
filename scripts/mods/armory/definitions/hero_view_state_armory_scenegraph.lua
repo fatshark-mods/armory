@@ -914,8 +914,65 @@ return {
         position = { 0, -35, 0 }
     },
 
-    action_info_push_attack = {
+    action_info_light_attack5 = {
         parent = "action_info_light_attack4",
+        vertical_alignment = "center",
+        horizontal_alignment = "center",
+        size = { right_window_size[1] - 30, 35 },
+        position = { 0, -35, 0 }
+    },
+    action_info_light_attack5_text = {
+        parent = "action_info_light_attack5",
+        vertical_alignment = "center",
+        horizontal_alignment = "left",
+        size = { right_window_size[1] / 2 - 5, 35 },
+        position = { 15, 0, 2 }
+    },
+    action_info_light_attack5_attack_speed = {
+        parent = "action_info_light_attack4_attack_speed",
+        vertical_alignment = "center",
+        horizontal_alignment = "center",
+        size = { base_info_segment_width / 2, 35 },
+        position = { 0, -35, 0 }
+    },
+    action_info_light_attack5_damage_limit = {
+        parent = "action_info_light_attack4_damage_limit",
+        vertical_alignment = "center",
+        horizontal_alignment = "left",
+        size = { base_info_segment_width / 2, 35 },
+        position = { 0, -35, 0 }
+    },
+    action_info_light_attack5_stagger_limit = {
+        parent = "action_info_light_attack4_stagger_limit",
+        vertical_alignment = "center",
+        horizontal_alignment = "right",
+        size = { base_info_segment_width / 2, 35 },
+        position = { 0, -35, 0 }
+    },
+    action_info_light_attack5_armor_damage = {
+        parent = "action_info_light_attack4_armor_damage",
+        vertical_alignment = "center",
+        horizontal_alignment = "center",
+        size = { base_info_segment_width / 2, 35 },
+        position = { 0, -35, 1 }
+    },
+    action_info_light_attack5_base_damage = {
+        parent = "action_info_light_attack4_base_damage",
+        vertical_alignment = "center",
+        horizontal_alignment = "center",
+        size = { base_info_segment_width / 2, 35 },
+        position = { 0, -35, 1 }
+    },
+    action_info_light_attack5_special = {
+        parent = "action_info_light_attack4_special",
+        vertical_alignment = "center",
+        horizontal_alignment = "center",
+        size = { base_info_segment_width, 35 },
+        position = { 0, -35, 0 }
+    },
+
+    action_info_push_attack = {
+        parent = "action_info_light_attack5",
         vertical_alignment = "center",
         horizontal_alignment = "center",
         size = { right_window_size[1] - 30, 35 },
@@ -929,42 +986,42 @@ return {
         position = { 15, 0, 2 }
     },
     action_info_push_attack_attack_speed = {
-        parent = "action_info_light_attack4_attack_speed",
+        parent = "action_info_light_attack5_attack_speed",
         vertical_alignment = "center",
         horizontal_alignment = "center",
         size = { base_info_segment_width / 2, 35 },
         position = { 0, -35, 0 }
     },
     action_info_push_attack_damage_limit = {
-        parent = "action_info_light_attack4_damage_limit",
+        parent = "action_info_light_attack5_damage_limit",
         vertical_alignment = "center",
         horizontal_alignment = "left",
         size = { base_info_segment_width / 2, 35 },
         position = { 0, -35, 0 }
     },
     action_info_push_attack_stagger_limit = {
-        parent = "action_info_light_attack4_stagger_limit",
+        parent = "action_info_light_attack5_stagger_limit",
         vertical_alignment = "center",
         horizontal_alignment = "right",
         size = { base_info_segment_width / 2, 35 },
         position = { 0, -35, 0 }
     },
     action_info_push_attack_armor_damage = {
-        parent = "action_info_light_attack4_armor_damage",
+        parent = "action_info_light_attack5_armor_damage",
         vertical_alignment = "center",
         horizontal_alignment = "center",
         size = { base_info_segment_width / 2, 35 },
         position = { 0, -35, 1 }
     },
     action_info_push_attack_base_damage = {
-        parent = "action_info_light_attack4_base_damage",
+        parent = "action_info_light_attack5_base_damage",
         vertical_alignment = "center",
         horizontal_alignment = "center",
         size = { base_info_segment_width / 2, 35 },
         position = { 0, -35, 1 }
     },
     action_info_push_attack_special = {
-        parent = "action_info_light_attack4_special",
+        parent = "action_info_light_attack5_special",
         vertical_alignment = "center",
         horizontal_alignment = "center",
         size = { base_info_segment_width, 35 },

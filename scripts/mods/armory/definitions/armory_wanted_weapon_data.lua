@@ -386,6 +386,30 @@ return {
         }
     },
 
+    wh_flail_shield = {
+        skin_prefix = "wh_flail_shield",
+        position = {}
+    },
+    wh_hammer_book = {
+        skin_prefix = "wh_hammer_book",
+        position = {}
+    },
+    wh_dual_hammer = {
+        skin_prefix = "wh_dual_hammer",
+        position = {}
+    },
+    wh_hammer_shield = {
+      skin_prefix = "wh_hammer_shield",
+      position = {}
+    },
+    wh_2h_hammer = {
+        skin_prefix = "wh_2h_hammer",
+        position = {}
+    },
+    wh_1h_hammer = {
+        skin_prefix = "wh_1h_hammer",
+        position = {}
+    },
     wh_deus_01 = {
         skin_prefix = "wh_deus_01",
         position = {}
