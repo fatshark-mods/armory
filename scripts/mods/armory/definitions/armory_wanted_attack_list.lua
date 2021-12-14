@@ -615,7 +615,9 @@ return {
             push = "push_attack",
             heavy = {
                 "heavy_attack_stab",
-                "heavy_attack_left_charged"
+                "heavy_attack_stab_charged",
+                "heavy_attack_left",
+                "heavy_attack_left_charged",
             }
         },
         one_handed_flail_shield_template = {
