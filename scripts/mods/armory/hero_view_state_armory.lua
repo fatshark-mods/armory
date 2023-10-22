@@ -882,7 +882,7 @@ HeroViewStateArmory._display_melee_action_info = function (self, attacks, data)
     local heavy_attacks = data.heavy_attacks
     local push_attack_action = data.push_attack_action
 
-    total_attack_num = 5 + #attacks.heavy
+    total_attack_num = 6 + #attacks.heavy
 
     for i = 1, #attacks.light, 1 do
         local widget_name = "action_info_light_attack" .. tostring(i)

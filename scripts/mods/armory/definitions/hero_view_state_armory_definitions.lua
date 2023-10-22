@@ -1207,6 +1207,7 @@ local highlight_widget_list = {
     "action_info_light_attack2",
     "action_info_light_attack3",
     "action_info_light_attack4",
+    "action_info_light_attack5",
     "action_info_push_attack",
     "action_info_heavy_attack1",
     "action_info_heavy_attack2",

@@ -104,6 +104,40 @@ mod:hook_safe(StateInGameRunning, "update", function (self)
     end
 end)
 
+local function get_upvalue_by_name(obj, upvalue_name)
+    for _, v in pairs(obj) do
+        if type(v) == "function" then
+            local debug_info = debug.getinfo(v)
+            local func = debug_info.func
+            local upvalues_n = debug_info.nups
+
+            for i = 1, upvalues_n do
+                local up_name, up_value = debug.getupvalue(func, i)
+                if up_name == upvalue_name then
+                    mod:echo(up_value)
+                    return up_value, i, v
+                end
+            end
+
+        end
+    end
+end
+
+local function set_upvalue_by_name(obj, upvalue_name, new_value)
+    local upvalue, upvalue_index, func = get_upvalue_by_name(obj, upvalue_name)
+    debug.setupvalue(func, upvalue_index, new_value)
+end
+
+mod:hook(Unit, "get_data", function(func, unit, ...)
+    if unit == nil or not unit then
+        return
+    end
+
+    return func(unit, ...)
+end)
+
+set_upvalue_by_name(ActionUtils, "unit_get_data", Unit.get_data)
+
 mod.open_armory_view = function ()
     if not mod.ingame_ui_context or not mod.ingame_ui_context.is_in_inn then
         return
