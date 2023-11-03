@@ -757,9 +757,31 @@ return {
         }
     },
     bw = {
+
+        staff_death = {
+            ranged = {
+                { "default_02", "Curse Bolt" },
+                { "soul_rip", "Soul Rip" }
+            },
+            alternate = {}
+        },
+        staff_scythe = {
+            light = {
+                "light_attack_01",
+                "light_attack_02",
+                "light_attack_03",
+                "light_attack_04",
+            },
+            push = "light_attack_bopp",
+            heavy = {
+                "heavy_attack_01",
+                "heavy_attack_02",
+                "heavy_attack_03"
+            }
+        },
         bw_deus_01_template_1 = {
             ranged = {
-                { "default", "Fireball Shotgun" },
+                { "default", "Fireball" },
                 { "geiser_launch", "Flame Geyser" }
             },
             alternate = {}

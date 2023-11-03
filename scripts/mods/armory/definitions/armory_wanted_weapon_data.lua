@@ -210,6 +210,14 @@ return {
         is_ranged = true
     },
 
+    bw_necromancy_staff = {
+        skin_prefix = "bw_necromancy_staff",
+        position = {}
+    },
+    bw_ghost_scythe = {
+        skin_prefix = "bw_ghost_scythe",
+        position = {}
+    },
     bw_deus_01 = {
         skin_prefix = "bw_deus_01",
         position = {}
