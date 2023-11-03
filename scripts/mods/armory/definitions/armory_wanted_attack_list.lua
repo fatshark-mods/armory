@@ -760,7 +760,7 @@ return {
 
         staff_death = {
             ranged = {
-                { "default_02", "Death Bolt" },
+                { "default_02", "Curse Bolt" },
                 { "soul_rip", "Soul Rip" }
             },
             alternate = {}
@@ -781,7 +781,7 @@ return {
         },
         bw_deus_01_template_1 = {
             ranged = {
-                { "default", "Fireball Shotgun" },
+                { "default", "Fireball" },
                 { "geiser_launch", "Flame Geyser" }
             },
             alternate = {}
